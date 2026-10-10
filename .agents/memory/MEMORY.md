@@ -1,0 +1,1 @@
+- [Serverpulse scope](serverpulse-scope.md) — Keep the product frontend-only with browser-local demo data until the user asks for backend work.

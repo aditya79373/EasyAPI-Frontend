@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Serverpulse"
+description = "An API management and monitoring platform for developers to catalog APIs, test requests, manage keys, inspect live traffic, and monitor service health. This first version runs as a frontend-only demo with realistic mock data persisted in the browser."
+version = "1.0.0"
+id = "artifacts/serverpulse"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23824
+
+[services.development]
+run = "pnpm --filter @workspace/serverpulse run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/serverpulse", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/serverpulse/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23824"
+BASE_PATH = "/"
