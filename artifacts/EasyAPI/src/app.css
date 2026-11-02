@@ -724,11 +724,99 @@ html.light .count-badge {
 /* =====================================================
    TYPE SCALE: sirf yahan se sab text control hoga
    ===================================================== */
+   /* ---------- Android-only sidebar (hamburger drawer) ---------- */
+@supports not (-webkit-touch-callout: none) {
+  @media (pointer: coarse) and (max-width: 900px) {
+
+    .sidebar .nav-label {
+      font-size: 14px !important;        /* WORKSPACE / MANAGE / RESOURCES */
+    }
+
+    .sidebar nav a,
+    .sidebar nav button {
+      font-size: 16px !important;        /* Overview, API inventory, Alerts... */
+    }
+
+    .sidebar nav a svg,
+    .sidebar nav button svg {
+      width: 20px;
+      height: 20px;                      /* icons thode bade */
+    }
+
+    .sidebar .ws-text b {
+      font-size: 17px !important;        /* Anisha Patil */
+    }
+
+    .sidebar .ws-text small {
+      font-size: 15px !important;        /* Plasser IndianInssq */
+    }
+
+    .sidebar .logout-btn {
+      font-size: 15px !important;        /* Log out */
+    }
+  }
+}
+/* ---------- Android-only top bar (bahut halka bump) ---------- */
+@supports not (-webkit-touch-callout: none) {
+  @media (pointer: coarse) and (max-width: 900px) {
+
+    /* hamburger, moon, bell icons */
+    .topbar button svg,
+    .topbar a svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
+
+    /* workspace chip (AP + X) */
+    .topbar .ws-chip .avatar,
+    .topbar .ws-chip .ws-badge {
+      width: 24px !important;
+      height: 24px !important;
+      font-size: 11px !important;        /* "AP" text */
+    }
+    .topbar .ws-chip svg {
+      width: 14px !important;
+      height: 14px !important;           /* X icon */
+    }
+
+    /* profile photo */
+    .topbar .user-avatar,
+    .topbar img.avatar {
+      width: 34px !important;
+      height: 34px !important;
+    }
+  }
+}
+/* ---------- Android-only: sidebar top workspace + logout ---------- */
+@supports not (-webkit-touch-callout: none) {
+  @media (pointer: coarse) and (max-width: 900px) {
+
+    /* upar wala P + "Plasser IndianInssq" */
+    .sidebar .workspace-label b {
+      font-size: 15px !important;
+    }
+    .sidebar .workspace-avatar {
+      width: 34px !important;
+      height: 34px !important;
+      font-size: 14px !important;          /* "P" */
+    }
+
+    /* Log out */
+    .sidebar .sidebar-bottom .user-menu span,
+    .sidebar .sidebar-bottom .user-menu b {
+      font-size: 15px !important;
+    }
+    .sidebar .sidebar-bottom .user-menu svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
+  }
+}
 :root {
-  --t-xs: 12px;     /* captions, tags, labels */
-  --t-sm: 13px;     /* secondary/description text */
-  --t-base: 14px;   /* normal text, rows, inputs, tables */
-  --t-md: 15px;     /* card titles, emphasis */
+  --t-xs: 14px;     /* captions, tags, labels */
+  --t-sm: 15px;     /* secondary/description text */
+  --t-base: 15px;   /* normal text, rows, inputs, tables */
+  --t-md: 18px;     /* card titles, emphasis */
   --t-lg: 18px;     /* modal / section headings */
 }
 
