@@ -704,7 +704,28 @@ h1, h2, h3, p, b, span { overflow-wrap: anywhere; }
     margin-right: 4px;
   }
 }
+@media (max-width: 640px) {
+  .bell-panel {
+    position: fixed !important;
+    top: 64px;
+    left: 16px !important;
+    right: 16px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    transform: none !important;
+  }
+}
+.topbar .crumb b {
+  font-size: 18px;
+  font-weight: 600;
+}
 
+@media (max-width: 640px) {
+  .topbar .crumb b {
+    font-size: 15px;
+  }
+}
   /* Request logs: refresh button neeche right corner mein */
   .log-card .toolbar-right {
     display: flex !important;

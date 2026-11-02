@@ -1260,8 +1260,9 @@ const doLogout = () => {
     localStorage.removeItem('sp_token');
     localStorage.removeItem('sp_user');
     localStorage.removeItem('sp_viewname');
-    setAuthed(false);
-    navigate('/login', { replace: true });
+        localStorage.removeItem('sp_viewname');
+    localStorage.removeItem('sp_view');
+    window.location.replace('/');
   }, 3000);
 };
 
@@ -1549,12 +1550,17 @@ useEffect(() => {
     >
       {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
     </button>
-    <Link className="landing-login" to={authed ? '/dashboard' : '/login'}>
-      {authed ? 'Open workspace' : 'Log in'}
-    </Link>
-    <Link className="btn btn-primary" to="/register">
-      Start free <ArrowRight size={15} />
-    </Link>
+<Link
+  className={authed ? 'btn btn-primary' : 'landing-login'}
+  to={authed ? '/dashboard' : '/login'}
+>
+  {authed ? <>Open workspace <ArrowRight size={15} /></> : 'Log in'}
+</Link>
+{!authed && (
+  <Link className="btn btn-primary" to="/register">
+    Start free <ArrowRight size={15} />
+  </Link>
+)}
     <button
       className="icon-btn nav-toggle"
       onClick={() => setMenuOpen(!menuOpen)}
@@ -1581,9 +1587,9 @@ useEffect(() => {
             ship the interfaces their business runs on.
           </p>
           <div className="hero-actions">
-            <Link className="btn btn-primary btn-large" to="/register">
-              Open your workspace <ArrowRight size={17} />
-            </Link>
+           <Link className="btn btn-primary btn-large" to={authed ? '/dashboard' : '/register'}>
+  Open your workspace <ArrowRight size={17} />
+</Link>
             <Link to="/status" className="hero-secondary">
               <Play size={14} /> View live status
             </Link>
@@ -1699,9 +1705,9 @@ useEffect(() => {
             EasyAPI brings the everyday API loop into one workspace: inventory, test, observe,
             improve.
           </p>
-          <Link className="text-link" to="/register">
-            Explore the workspace <ArrowRight size={15} />
-          </Link>
+         <Link className="text-link" to={authed ? '/dashboard' : '/register'}>
+  Explore the workspace <ArrowRight size={15} />
+</Link>
         </div>
         <div className="workflow-steps">
           <Step
@@ -1732,9 +1738,9 @@ useEffect(() => {
         </div>
         <div>
           <p>Bring your API work into focus. Start and make the workspace your own.</p>
-          <Link className="btn btn-primary btn-large" to="/register">
-            Create a workspace <ArrowRight size={17} />
-          </Link>
+         <Link className="btn btn-primary btn-large" to={authed ? '/dashboard' : '/register'}>
+  {authed ? 'Go to workspace' : 'Create a workspace'} <ArrowRight size={17} />
+</Link>
         </div>
       </section>
       <footer className="landing-footer">
@@ -1744,7 +1750,7 @@ useEffect(() => {
 <span>© {new Date().getFullYear()} EasyAPI. Your APIs, always in sync.</span>
         <div>
           <Link to="/status">Status</Link>
-          <Link to="/login">Sign in</Link>
+          {!authed && <Link to="/login">Sign in</Link>}
           <a href="#product">Product</a>
         </div>
       </footer>

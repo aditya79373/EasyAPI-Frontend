@@ -867,6 +867,10 @@ html body .metric-card .metric-change {
 html body .topbar .live-label {
   font-size: 13px !important;
 }
+.topbar .crumb b {
+  font-size: 13px;
+  font-weight: 600;
+}
 
 /* ===== Mobile (Android) ===== */
 @media (max-width: 640px) {
