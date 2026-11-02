@@ -268,6 +268,48 @@ h1, h2, h3, p, b, span { overflow-wrap: anywhere; }
     min-width: 0;
   }
 }
+/* ---------- Mobile: Start free ko thoda right shift ---------- */
+@media (max-width: 640px) {
+  .landing-nav a[href*="signup"],
+  .landing-nav a[href*="register"],
+  .landing-nav .landing-login ~ a,
+  .landing-nav a[class*="btn"]:not(.landing-login),
+  .landing-nav a[class*="primary"] {
+    transform: translateX(20px);
+  }
+}
+/* ---------- Mobile: theme toggle ko bhi right shift ---------- */
+@media (max-width: 640px) {
+  .landing-nav .theme-toggle {
+    transform: translateX(22px);
+  }
+}
+
+/* ---------- Mobile: logo ek line mein + toggle bada ---------- */
+@media (max-width: 640px) {
+
+  /* logo: link aur uske andar ka sab kuch ek line mein */
+  .landing-nav a:first-child,
+  .landing-nav a:first-child *,
+  .landing-nav [class*="logo"],
+  .landing-nav [class*="logo"] *,
+  .landing-nav [class*="brand"],
+  .landing-nav [class*="brand"] * {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    min-width: max-content;
+  }
+
+  /* moon toggle bada */
+  .landing-nav .theme-toggle {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .landing-nav .theme-toggle svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+}
 @media (max-width: 900px) {
   /* ---- Profile photo: buttons wrap hon, kate nahi ---- */
   .profile-photo > div {
@@ -316,7 +358,9 @@ h1, h2, h3, p, b, span { overflow-wrap: anywhere; }
     padding: 0 10px !important;
     gap: 8px;
   }
-
+.menu-button {
+  transform: translateX(8px);
+}
   /* hamburger bilkul left corner */
   .topbar .mobile-menu {
     margin-left: 0 !important;
@@ -629,6 +673,7 @@ h1, h2, h3, p, b, span { overflow-wrap: anywhere; }
     flex: 1 1 0 !important;
     min-width: calc(100% - 72px) !important;
   }
+  
   .status-banner > :last-child {
     flex: 0 0 auto !important;
     width: fit-content !important;

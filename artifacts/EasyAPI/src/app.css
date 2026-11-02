@@ -766,7 +766,12 @@ html.light .count-badge {
       width: 20px !important;
       height: 20px !important;
     }
-
+@media (max-width: 768px) {
+  .nav-toggle {
+    position: relative;
+    left: 10px;
+  }
+}
     /* workspace chip (AP + X) */
     .topbar .ws-chip .avatar,
     .topbar .ws-chip .ws-badge {
@@ -811,6 +816,97 @@ html.light .count-badge {
       height: 20px !important;
     }
   }
+}
+/* ---------- Start free: thodi width zyada ---------- */
+.landing-nav a[href*="signup"],
+.landing-nav a[href*="register"],
+.landing-nav .landing-login ~ a,
+.landing-nav .landing-login ~ button,
+.landing-nav button:not(.theme-toggle):not(.icon-btn) {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  padding-right: 20px !important;
+}
+/* ---------- Start free: size theek, navbar mein beech mein ---------- */
+.landing-nav a[href*="signup"],
+.landing-nav a[href*="register"],
+.landing-nav .landing-login ~ a,
+.landing-nav a[class*="btn"]:not(.landing-login),
+.landing-nav a[class*="primary"] {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  padding: 0 20px !important;
+  height: 42px !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  align-self: center !important;
+  border-radius: 10px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+/* ---------- Navbar right side: halka gap ---------- */
+.landing-nav .theme-toggle {
+  margin-right: 4px !important;
+}
+
+.landing-nav .landing-login {
+  margin-left: 2px !important;
+  margin-right: 6px !important;
+}
+
+.landing-nav a[href*="signup"],
+.landing-nav a[href*="register"],
+.landing-nav .landing-login ~ a,
+.landing-nav a[class*="btn"]:not(.landing-login),
+.landing-nav a[class*="primary"] {
+  margin-left: 2px !important;
+}
+/* ---------- Start free: text size wapas bada ---------- */
+.landing-nav a[href*="signup"],
+.landing-nav a[href*="register"],
+.landing-nav .landing-login ~ a,
+.landing-nav .landing-login ~ button,
+.landing-nav button:not(.theme-toggle):not(.icon-btn) {
+  font-size: 15px !important;
+}
+/* ---------- Landing page buttons: text bada ---------- */
+.hero-copy a:not(.hero-secondary),
+.hero-copy button,
+.landing-cta a,
+.landing-cta button {
+  font-size: 15px !important;   /* Open your workspace / Create a workspace */
+  font-weight: 600;
+}
+
+.hero-copy a svg,
+.hero-copy button svg,
+.landing-cta a svg,
+.landing-cta button svg {
+  width: 18px !important;
+  height: 18px !important;      /* arrow icon bhi text ke saath */
+}
+
+.hero-secondary {
+  font-size: 16px !important;   /* View live status */
+}
+.hero-secondary svg {
+  width: 16px !important;
+  height: 16px !important;      /* play icon */
+}
+/* ---------- Eyebrow labels (chhote uppercase heading ke upar) ---------- */
+.eyebrow,
+[class*="eyebrow"] {
+  font-size: 14px !important;
+  letter-spacing: 0.14em !important;
+  font-weight: 600;
+}
+
+/* "API OPERATIONS, IN SYNC" ke aage wali line */
+.eyebrow::before,
+[class*="eyebrow"]::before {
+  width: 28px;
 }
 :root {
   --t-xs: 14px;     /* captions, tags, labels */

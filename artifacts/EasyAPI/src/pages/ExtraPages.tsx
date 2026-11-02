@@ -2239,13 +2239,24 @@ export function PublicStatus() {
     return () => clearInterval(t);
   }, []);
 
-  if (!data) {
-    return (
-      <div className="public-status">
-        <p style={{ padding: 40 }}>{error ? "Couldn't load status." : 'Loading…'}</p>
-      </div>
-    );
-  }
+if (!data) {
+  return (
+    <div
+      className="public-status"
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 14,
+      }}
+    >
+      <OrbitLoader color="currentColor" size={56} />
+      <span style={{ fontSize: 14, letterSpacing: 0.3 }}>Loading</span>
+    </div>
+  );
+}
 
   const hasOutage = data.services.some((s) => s.status === 'outage');
   const hasDegraded = data.services.some((s) => s.status === 'degraded');
