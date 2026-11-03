@@ -10,6 +10,7 @@ import {
   useParams,
   useSearchParams,
 } from 'react-router-dom';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { Dropdown } from './components/ui/Dropdown';
 import { onLive, startLive, stopLive } from './lib/live';
 import { fetchTeam } from './lib/teamCache';
@@ -955,6 +956,7 @@ const sync = async () => {
       .catch(() => {});
   }, [theme, authed, synced]);
   return (
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID || ''}>
     <BrowserRouter>
       <AuthContextProvider
         value={{ authed, setAuthed, role, setRole, theme, setTheme, workspace, setWorkspace, user, setUser }}
@@ -993,6 +995,7 @@ const sync = async () => {
         </Suspense>
       </AuthContextProvider>
     </BrowserRouter>
+    </GoogleOAuthProvider>
   );
 }
 export default App;
@@ -1794,9 +1797,10 @@ const API = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 const LOADER_MS = 5000; // loader kam se kam itni der dikhega (ms)
 
 function AuthPage({ mode }: { mode: 'login' | 'register' | 'forgot' | 'reset' }) {
-  const { setAuthed, setWorkspace, setUser } = useAuth(),
+  const { setAuthed, setWorkspace, setUser, theme } = useAuth(),
     nav = useNavigate();
   const [params] = useSearchParams();
+  const [googleWidth, setGoogleWidth] = useState(360);
   const [loading, setLoading] = useState(false);
   const [notice, setNotice] = useState('');
   const [error, setError] = useState('');
@@ -1811,7 +1815,35 @@ function AuthPage({ mode }: { mode: 'login' | 'register' | 'forgot' | 'reset' })
   const [step, setStep] = useState<'otp' | 'password'>('otp');
   const [resetToken, setResetToken] = useState('');
   const passwordsMatch = confirmPassword.length > 0 && password === confirmPassword;
+  useEffect(() => {
+  const updateGoogleWidth = () => {
+    const submitButton = document.querySelector(
+      '.auth-submit'
+    );
 
+    if (submitButton) {
+      setGoogleWidth(
+        Math.round(submitButton.getBoundingClientRect().width)
+      );
+    }
+  };
+
+  updateGoogleWidth();
+
+  const submitButton = document.querySelector('.auth-submit');
+
+  if (!submitButton) return;
+
+  const observer = new ResizeObserver(updateGoogleWidth);
+  observer.observe(submitButton);
+
+  window.addEventListener('resize', updateGoogleWidth);
+
+  return () => {
+    observer.disconnect();
+    window.removeEventListener('resize', updateGoogleWidth);
+  };
+}, [mode]);
   // Mode badalne par (login <-> register) aur back/forward dabane par sab fields khali
   useEffect(() => {
     const reset = () => {
@@ -1927,6 +1959,34 @@ function AuthPage({ mode }: { mode: 'login' | 'register' | 'forgot' | 'reset' })
       setLoading(false);
     }
   };
+  const googleDone = async (credential?: string) => {
+  if (!credential || loading) return;
+  setError('');
+  setNotice('');
+  setLoading(true);
+  try {
+    const { data } = await withDelay(
+      axios.post(`${API}/api/auth/google`, { credential }),
+    );
+    localStorage.setItem('sp_token', data.token);
+    localStorage.setItem('sp_demo_auth', 'yes');
+    localStorage.setItem('sp_workspace', data.user.workspace);
+    const u = { name: data.user.name || '', email: data.user.email };
+    localStorage.setItem('sp_user', JSON.stringify(u));
+    setUser(u);
+    setWorkspace(data.user.workspace);
+    setAuthed(true);
+    nav('/dashboard');
+  } catch (err) {
+    setError(
+      axios.isAxiosError(err)
+        ? err.response?.data?.message || 'Could not reach the server'
+        : 'Something went wrong',
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   const eyeBtn = {
     position: 'absolute' as const,
@@ -2149,7 +2209,22 @@ function AuthPage({ mode }: { mode: 'login' | 'register' | 'forgot' | 'reset' })
               <ArrowRight size={16} />
             </Button>
           </form>
-
+                {(mode === 'login' || mode === 'register') && (
+  <>
+    <div className="auth-or"><span>or</span></div>
+<div className="ea-google-btn">
+  <GoogleLogin
+    onSuccess={(r) => googleDone(r.credential)}
+    onError={() => setError('Google sign-in failed')}
+    theme={theme === 'dark' ? 'filled_black' : 'outline'}
+    text="continue_with"
+    shape="rectangular"
+    size="large"
+    width={String(googleWidth)}
+  />
+</div>
+  </>
+)}
           {mode === 'login' && (
             <div className="auth-links">
               <Link to="/forgot-password">Forgot password?</Link>

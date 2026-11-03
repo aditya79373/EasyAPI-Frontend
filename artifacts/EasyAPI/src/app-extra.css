@@ -987,6 +987,352 @@ h1, h2, h3, p, b, span { overflow-wrap: anywhere; }
     padding-top: 76px !important;
   }
 }
+/* ---------- Phone: dropdown upar, button niche (final) ---------- */
+@media (max-width: 900px) {
+  .page-heading {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .page-heading .heading-action {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-top: 12px !important;
+  }
+
+  .page-heading .heading-action > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    flex: none !important;
+  }
+
+  .page-heading .heading-action > .btn {
+    height: 42px !important;
+    min-height: 42px !important;
+    justify-content: center !important;
+  }
+}
+/* ---------- Phone: members badge poori width nahi, apni width ---------- */
+@media (max-width: 900px) {
+  .page-heading .heading-action > .count-badge {
+    width: auto !important;
+    max-width: none !important;
+    align-self: flex-start !important;
+    display: inline-flex !important;
+    align-items: center;
+  }
+}
+@media (max-width: 900px) {
+  /* Google button: inputs jitni hi chaudai, screen ke andar */
+  .auth-form-wrap [class*="google" i],
+  .auth-form-wrap [id*="google" i],
+  .auth-form-wrap iframe,
+  .auth-form-wrap > div:has(iframe) {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  .auth-form-wrap [class*="google" i] > *,
+  .auth-form-wrap [id*="google" i] > * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /* Google button - independent responsive styling */
+
+.ea-google-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ea-google-btn iframe {
+  max-width: 100% !important;
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+  .ea-google-btn {
+    width: 100%;
+  }
+
+  .ea-google-btn > div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+/* Auth primary button text size */
+.auth-submit {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  min-height: 44px !important;
+}
+
+/* Button ke andar arrow icon */
+.auth-submit svg {
+  width: 16px;
+  height: 16px;
+}
+
+  /* Back link aur "WELCOME BACK" ke beech gap */
+  .auth-back {
+    display: inline-flex !important;
+    margin-bottom: 22px !important;
+  }
+}
+.auth-google {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+.auth-google > div {
+  transform-origin: left center;
+}
+
+@media (max-width: 900px) {
+  .auth-back {
+    display: inline-flex !important;
+    margin-bottom: 22px !important;
+  }
+}
+
+/* Chhote phones: button ko form ki chaudai mein fit karo */
+@media (max-width: 440px) {
+  .auth-google > div {
+    transform: scale(0.92);
+  }
+}
+@media (max-width: 390px) {
+  .auth-google > div {
+    transform: scale(0.86);
+  }
+}
+@media (max-width: 360px) {
+  .auth-google > div {
+    transform: scale(0.8);
+  }
+}
+
+/* =========================================
+   RESPONSIVE AUTHENTICATION PAGE
+========================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.auth-layout {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow-x: hidden;
+}
+
+.auth-aside {
+  min-width: 0;
+  min-height: 100%;
+}
+
+.auth-main {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 4vw, 56px);
+}
+
+.auth-back {
+  flex-shrink: 0;
+}
+
+.auth-form-wrap {
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+  min-width: 0;
+}
+
+.auth-form-wrap form {
+  width: 100%;
+}
+
+.auth-form-wrap label {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 16px;
+}
+
+.auth-form-wrap input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.auth-submit {
+  width: 100%;
+  max-width: 100%;
+}
+
+.auth-google {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.auth-google > div {
+  max-width: 100%;
+}
+
+.auth-links,
+.auth-switch {
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.auth-loading-overlay {
+  z-index: 100;
+}
+
+/* =========================================
+   TABLETS
+========================================= */
+
+@media (max-width: 1024px) {
+  .auth-layout {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  .auth-main {
+    padding: 32px;
+  }
+
+  .auth-form-wrap {
+    max-width: 400px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+  .auth-layout {
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  .auth-aside {
+    display: none;
+  }
+
+  .auth-main {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 24px clamp(18px, 6vw, 32px);
+  }
+
+  .auth-form-wrap {
+    width: 100%;
+    max-width: 440px;
+    margin: auto;
+  }
+
+  .auth-form-wrap h1 {
+    font-size: clamp(25px, 6vw, 32px);
+    line-height: 1.2;
+  }
+
+  .auth-form-wrap .auth-sub {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .auth-form-wrap label {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .auth-form-wrap input {
+    height: 44px;
+  }
+
+  .auth-submit {
+    min-height: 44px;
+  }
+
+  .auth-switch {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .auth-main {
+    padding: 20px 16px;
+  }
+
+  .auth-form-wrap h1 {
+    font-size: 25px;
+  }
+
+  .auth-form-wrap .auth-sub {
+    font-size: 12px;
+  }
+
+  .auth-form-wrap label {
+    margin-bottom: 14px;
+  }
+
+  .auth-switch {
+    font-size: 13px;
+  }
+}
+
+/* =========================================
+   SHORT HEIGHT DEVICES
+========================================= */
+
+@media (max-height: 650px) {
+  .auth-main {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .auth-form-wrap {
+    margin-top: 35px;
+    margin-bottom: 35px;
+  }
+}
+
 /* ---------- Mobile: Profile aur Settings dono mein photo row same ---------- */
 @media (max-width: 900px) {
 

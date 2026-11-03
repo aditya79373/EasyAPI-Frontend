@@ -66,7 +66,7 @@ function buildCss() {
   // Jahan dot bhaag raha hai (tez chaal) wahan normal speed, baaki jagah CALM.slow guna slow
   const calm = (r: number) => {
     const v = Math.abs(curve(Math.min(END, r + 0.05)) - curve(Math.max(0, r - 0.05))) / 0.1;
-    return 1 + (CALM.slow - 1) * (1 - ease(Math.min(1, v / CALM.sprint)));
+    return 1 + 0.5 * ease(Math.min(1, v / CALM.sprint));
   };
   const DR = 0.02;
   const N = Math.round(END / DR);

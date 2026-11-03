@@ -160,6 +160,36 @@
     height: 15px;
   }
 }
+.auth-or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
+  color: hsl(var(--muted-foreground));
+  font-size: 13px;
+}
+.auth-or::before,
+.auth-or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: hsl(var(--border));
+}
+.auth-google {
+  display: flex;
+  justify-content: center;
+}
+.auth-submit {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  min-height: 44px !important;
+}
+
+/* Button ke andar arrow icon */
+.auth-submit svg {
+  width: 16px;
+  height: 16px;
+}
 /* ---------- Docs: 3 cards aur niche ke content card ke beech gap ---------- */
 .docs-body {
   margin-top: 20px !important;
