@@ -673,7 +673,263 @@ h1, h2, h3, p, b, span { overflow-wrap: anywhere; }
     flex: 1 1 0 !important;
     min-width: calc(100% - 72px) !important;
   }
-  
+  /* ---------- Settings: toggle row mein toggle upar right pe ---------- */
+.setting-row:has(.toggle-input) {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 16px;
+}
+
+.setting-row:has(.toggle-input) > span {
+  flex: 1;
+  min-width: 0;
+}
+
+.setting-row:has(.toggle-input) .toggle-input {
+  flex-shrink: 0;
+  margin-top: 2px;   /* title ke saath line mein */
+}
+/* ---------- Change password: eye icon upar right pe fix (Android) ---------- */
+@media (max-width: 900px) {
+  .profile-password {
+    position: relative;
+  }
+
+  .profile-password .card-head {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 12px;
+  }
+
+  .profile-password .card-head > div {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .profile-password .card-head .icon-btn {
+    position: static !important;   /* absolute/fixed ho to hata do */
+    transform: none !important;
+    flex-shrink: 0;
+    margin: 0 !important;
+  }
+}
+/* ---------- Android: graph ke andar ka text bada ---------- */
+@media (max-width: 900px) {
+
+  /* axis numbers + time labels */
+  .chart-wrap .recharts-cartesian-axis-tick text,
+  .chart-wrap .recharts-text {
+    font-size: 13px !important;
+  }
+
+  /* Requests / Errors legend */
+  .chart-legend,
+  .chart-legend span {
+    font-size: 13px !important;
+  }
+
+  /* "No requests yet" + "Send one from the tester" + View analytics */
+  .chart-foot,
+  .chart-foot small,
+  .chart-foot a {
+    font-size: 13px !important;
+  }
+
+  /* tooltip text */
+  .chart-wrap .recharts-tooltip-wrapper {
+    font-size: 13px !important;
+  }
+}
+/* ---------- Mobile: API inventory ke buttons ek saath, left aligned ---------- */
+@media (max-width: 640px) {
+  .button-group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    width: 100%;
+  }
+
+  .button-group .btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0 12px !important;
+    font-size: 14px !important;
+    white-space: nowrap;
+  }
+}
+/* ---------- Mobile: dropdown aur New request ke beech halka gap ---------- */
+@media (max-width: 640px) {
+  .heading-action > * + *,
+  .heading-action > .btn,
+  .heading-action > a.btn {
+    margin-top: 10px !important;
+  }
+}
+/* ---------- Mobile: API health card bada ---------- */
+@media (max-width: 900px) {
+
+  /* ring ka size */
+  .health-card .health-ring {
+    width: 96px !important;
+    height: 96px !important;
+    flex-shrink: 0;
+  }
+
+  /* ring ke andar "0/0" */
+  .health-card .health-ring b {
+    font-size: 20px !important;
+  }
+  .health-card .health-ring b span {
+    font-size: 14px !important;
+  }
+
+  /* ring ke andar "healthy" */
+  .health-card .health-ring small {
+    font-size: 12px !important;
+  }
+
+  /* "No services yet" */
+  .health-card .health-summary-copy b {
+    font-size: 16px !important;
+  }
+
+  /* "Send a request from the tester" */
+  .health-card .health-summary-copy span {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* neeche service rows (name + latency) */
+  .health-card .health-row,
+  .health-card .health-row b,
+  .health-card .health-row span {
+    font-size: 14px !important;
+  }
+
+  /* ring aur text ke beech gap */
+  .health-card .health-summary {
+    gap: 16px !important;
+  }
+}
+/* ---------- Docs: Copy button code box ke BAHAR, upar right side ---------- */
+
+/* wrapper: upar button ke liye jagah */
+.docs-body div[style*="position: relative"] {
+  margin-top: 46px !important;
+}
+
+/* code box: andar extra padding nahi chahiye */
+.docs-body pre {
+  padding: 16px 18px !important;
+}
+
+/* Copy button: box ke upar, right side, bahar */
+.docs-body div[style*="position: relative"] > .btn {
+  position: absolute !important;
+  top: -38px !important;
+  right: 0 !important;
+  left: auto !important;
+  height: 32px !important;
+  min-height: 0 !important;
+  padding: 0 12px !important;
+  font-size: 12px !important;
+  gap: 5px !important;
+  z-index: 2;
+}
+.docs-body div[style*="position: relative"] > .btn svg {
+  width: 13px !important;
+  height: 13px !important;
+}
+/* ---------- Docs: Copy button upar + chhota, code block apni jagah ---------- */
+.docs-body div[style*="position: relative"] {
+  margin-top: 40px !important;
+}
+
+.docs-body div[style*="position: relative"] > .btn {
+  position: absolute !important;
+  top: -38px !important;
+  right: 0 !important;
+  left: auto !important;
+  height: 24px !important;
+  min-height: 0 !important;
+  padding: 0 8px !important;
+  font-size: 11px !important;
+  gap: 4px !important;
+  z-index: 2;
+}
+.docs-body div[style*="position: relative"] > .btn svg {
+  width: 11px !important;
+  height: 11px !important;
+}
+/* ---------- Docs: Copy button sirf upar move (size same) ---------- */
+.docs-body div[style*="position: relative"] > .btn {
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 6px 12px !important;
+  font-size: 13px !important;
+  gap: 6px !important;
+  line-height: 1.2 !important;
+
+  transform: scale(0.8) !important;
+  transform-origin: bottom right !important;
+
+  position: absolute !important;
+  top: -48px !important;
+  right: 0 !important;
+  left: auto !important;
+  z-index: 2;
+}
+.docs-body div[style*="position: relative"] > .btn svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+/* ---------- Mobile: Profile aur Settings dono mein photo row same ---------- */
+@media (max-width: 900px) {
+
+  /* PROFILE page: circle + title ek line mein, button niche */
+  .profile-photo > div {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 16px 20px !important;
+  }
+  .profile-photo > div > div {
+    display: contents;            /* h3 aur buttons seedha container ke item ban jayenge */
+  }
+  .profile-photo h3 {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+  }
+  .profile-photo > div > div > div {
+    flex-basis: 100%;             /* buttons poori nayi line mein */
+    margin-top: 0 !important;
+  }
+
+  /* dono jagah circle ka size same */
+  .profile-photo > div > span,
+  #settings-0 .setting-row:first-child > div:first-child > span:first-child {
+    width: 76px !important;
+    height: 76px !important;
+  }
+
+  /* dono jagah "Profile photo" text same size */
+  .profile-photo h3,
+  #settings-0 .setting-row:first-child b {
+    font-size: 16px !important;
+  }
+
+  /* SETTINGS page: button circle ke niche left mein, profile jaisa */
+  #settings-0 .setting-row:first-child {
+    align-items: flex-start !important;
+  }
+}
   .status-banner > :last-child {
     flex: 0 0 auto !important;
     width: fit-content !important;

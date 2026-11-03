@@ -389,13 +389,25 @@ function ProfileCard({
 function CodeBlock({ code }: { code: string }) {
   const [copied, setCopied] = useState(false);
   return (
-    <div style={{ position: 'relative', margin: '12px 0' }}>
+    <div className="code-wrap">
+      <div className="code-bar">
+        <button
+          type="button"
+          className="code-copy"
+          onClick={() => {
+            navigator.clipboard?.writeText(code);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 1500);
+          }}
+        >
+          {copied ? <Check size={12} /> : <Copy size={12} />} {copied ? 'Copied' : 'Copy'}
+        </button>
+      </div>
       <pre
         className="mono"
         style={{
           margin: 0,
           padding: '16px 18px',
-          paddingRight: 90,
           overflowX: 'auto',
           fontSize: 13,
           lineHeight: 1.7,
@@ -406,18 +418,6 @@ function CodeBlock({ code }: { code: string }) {
       >
         {code}
       </pre>
-      <button
-        type="button"
-        className="btn btn-secondary"
-        style={{ position: 'absolute', top: 10, right: 10, padding: '4px 10px', fontSize: 12 }}
-        onClick={() => {
-          navigator.clipboard?.writeText(code);
-          setCopied(true);
-          setTimeout(() => setCopied(false), 1500);
-        }}
-      >
-        {copied ? <Check size={13} /> : <Copy size={13} />} {copied ? 'Copied' : 'Copy'}
-      </button>
     </div>
   );
 }
@@ -728,15 +728,15 @@ const initials = (fullName || user.email || '?')
               color: '#6b5cff',
             }}
           >
-            {avatar ? (
-              <img
-                src={avatar}
-                alt="Profile"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            ) : (
-              initials
-            )}
+      {avatar ? (
+  <img
+    src={avatar}
+    alt="Profile"
+    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+  />
+) : (
+  <UserRound size={30} />
+)}
           </span>
           <div>
             <h3>Profile photo</h3>

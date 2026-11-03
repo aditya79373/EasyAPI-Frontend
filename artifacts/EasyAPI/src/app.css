@@ -98,9 +98,71 @@
 .docs-active {
   border-color: #8a7bff !important;
 }
+/* ---------- Docs: Copy button har code block ke upar, same jagah ---------- */
+.code-wrap {
+  margin: 12px 0;
+}
+.code-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 6px;
+}
+.code-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 26px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: hsl(var(--foreground));
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 7px;
+  cursor: pointer;
+}
+.code-copy svg {
+  width: 12px;
+  height: 12px;
+}
+/* ---------- Docs: Copy button, laptop pe bada ---------- */
+.code-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 26px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: hsl(var(--foreground));
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 7px;
+  cursor: pointer;
+}
+.code-copy svg {
+  width: 12px;
+  height: 12px;
+}
+
+@media (min-width: 901px) {
+  .code-copy {
+    height: 34px;
+    padding: 0 14px;
+    font-size: 14px;
+    gap: 7px;
+    border-radius: 9px;
+  }
+  .code-copy svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+/* ---------- Docs: 3 cards aur niche ke content card ke beech gap ---------- */
 .docs-body {
-  margin-top: 20px;
-  padding: 24px 26px;
+  margin-top: 20px !important;
 }
 .bell-btn i.bell-blink::after {
   content: '';
@@ -887,7 +949,507 @@ html.light .count-badge {
   width: 18px !important;
   height: 18px !important;      /* arrow icon bhi text ke saath */
 }
+/* ---------- PC sidebar: halka sa bada ---------- */
+@media (min-width: 901px) {
 
+  /* WORKSPACE / MANAGE / RESOURCES */
+  .sidebar .nav-label {
+    font-size: 13px !important;
+  }
+
+  /* Overview, API inventory, Alerts... */
+  .sidebar .nav-link,
+  .sidebar .nav-link span {
+    font-size: 15px !important;
+  }
+  .sidebar .nav-link svg {
+    width: 19px !important;
+    height: 19px !important;
+  }
+
+  /* upar wala P + Plasser */
+  .sidebar .workspace-label b {
+    font-size: 15px !important;
+  }
+  .sidebar .workspace-avatar {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 15px !important;
+  }
+
+  /* Log out */
+  .sidebar .sidebar-bottom .user-menu span,
+  .sidebar .sidebar-bottom .user-menu b {
+    font-size: 15px !important;
+  }
+  .sidebar .sidebar-bottom .user-menu svg {
+    width: 19px !important;
+    height: 19px !important;
+  }
+}
+/* ---------- Profile photo card: halka bump (PC + Android) ---------- */
+
+/* AP circle / photo */
+.profile-photo > div > span {
+  width: 92px !important;
+  height: 92px !important;
+  font-size: 32px !important;
+}
+
+/* "Profile photo" title */
+.profile-photo h3 {
+  font-size: 16px !important;
+}
+
+/* Upload / Change photo + Remove buttons */
+.profile-photo .btn,
+.profile-photo button {
+  font-size: 14px !important;
+  padding: 9px 16px !important;
+}
+
+/* gap */
+.profile-photo > div {
+  gap: 22px !important;
+}
+/* ---------- PC top bar: halka sa bada ---------- */
+@media (min-width: 901px) {
+
+  /* Workspace > My profile */
+  .topbar .crumb,
+  .topbar .crumb span,
+  .topbar .crumb b {
+    font-size: 15px !important;
+  }
+  .topbar .crumb svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  /* All systems operational */
+  .topbar .live-label {
+    font-size: 14px !important;
+  }
+
+  /* theme, bell, logout icons */
+  .topbar .icon-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .topbar .icon-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* profile avatar (AP / photo) */
+  .topbar .avatar-btn {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 13px !important;
+  }
+
+  /* view pill (jab kisi aur ka workspace dekh rahe ho) */
+  .topbar .view-pill-text {
+    font-size: 14px !important;
+  }
+  .topbar .view-pill-avatar {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 11px !important;
+  }
+}
+/* ---------- Page heading ke neeche ka description text: bada ---------- */
+.page-heading > div:first-child > p {
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+/* ---------- Buttons + dropdowns: final (PC + Android) ---------- */
+
+/* normal buttons (Update password aur Team ke chhote dashboard buttons ko chhod ke) */
+.main-content .btn:not(.pw-btn):not(.dash-switch),
+.modal .btn:not(.pw-btn),
+.logout-modal .btn:not(.pw-btn),
+.profile-photo .btn,
+#settings-0 .setting-row:first-child .btn {
+  font-size: 15px !important;
+  min-height: 42px !important;
+  height: auto !important;
+  padding: 0 18px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  line-height: 1.2 !important;
+}
+
+.main-content .btn:not(.pw-btn):not(.dash-switch) svg,
+.modal .btn:not(.pw-btn) svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* dropdown trigger */
+.main-content [class*="dd-"] button,
+.main-content [class*="dropdown"] button,
+.main-content select {
+  font-size: 15px !important;
+  min-height: 42px !important;
+  height: auto !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  line-height: 1.2 !important;
+}
+
+/* dropdown list ke options */
+.main-content [class*="dd-"] [role="option"],
+.main-content [class*="dropdown"] [role="option"] {
+  font-size: 15px !important;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+}
+/* ---------- Dropdown trigger: bada text + height (PC + Android) ---------- */
+.main-content .page-heading button[aria-label],
+.main-content .heading-action button[aria-label],
+.main-content .toolbar-right button[aria-label],
+.main-content .toolbar-right > div > button,
+.main-content .heading-action > div > button:not(.btn),
+.main-content button[aria-haspopup],
+.main-content [role="combobox"],
+.main-content .request-line > div > button,
+.main-content .setting-row > div > button:not(.btn) {
+  font-size: 15px !important;
+  min-height: 42px !important;
+  height: 42px !important;
+  padding: 0 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 1.2 !important;
+}
+
+/* dropdown ke andar ka text / label */
+.main-content button[aria-haspopup] span,
+.main-content [role="combobox"] span,
+.main-content .heading-action > div > button:not(.btn) span,
+.main-content .toolbar-right > div > button span {
+  font-size: 15px !important;
+}
+
+/* arrow icon */
+.main-content button[aria-haspopup] svg,
+.main-content [role="combobox"] svg,
+.main-content .heading-action > div > button:not(.btn) svg,
+.main-content .toolbar-right > div > button svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* khulne wali list ke options */
+[role="listbox"] [role="option"],
+[role="listbox"] li {
+  font-size: 15px !important;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+}
+/* ---------- Team: Invite button ---------- */
+.invite-card .btn,
+.invite-card .pw-btn {
+  font-size: 15px !important;
+  padding: 0 20px !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.invite-card .btn svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* ---------- Team table: My Dashboard / Show dashboard ---------- */
+.team-card .dash-switch {
+  font-size: 13px !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  padding: 0 14px !important;
+  border-radius: 8px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+/* ---------- Team: Invite button thoda chhota ---------- */
+.invite-card .btn,
+.invite-card .pw-btn {
+  font-size: 14px !important;
+  min-height: 40px !important;
+  padding: 0 16px !important;
+}
+.invite-card .btn svg {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+/* ---------- Team table: dashboard buttons chhote ---------- */
+.team-card .dash-switch {
+  font-size: 12.5px !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  padding: 0 12px !important;
+  border-radius: 8px !important;
+}
+
+/* ---------- Team table: rows mein jagah ---------- */
+.team-card table td {
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+  vertical-align: middle !important;
+}
+
+/* dashboard column ke button ko left/right se gap */
+.team-card table td:nth-child(2) {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+/* avatar aur naam ke beech gap, naam aur email ke beech gap */
+.team-card .member-cell {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+.team-card .member-cell > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  line-height: 1.3;
+}
+/* ---------- Team: Enter email + Invite (same height, aligned) ---------- */
+.invite-card form {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+.invite-card input {
+  font-size: 15px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  padding: 0 14px !important;
+}
+.invite-card .btn,
+.invite-card .pw-btn {
+  font-size: 15px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  padding: 0 18px !important;
+  margin: 0 !important;
+}
+
+/* ---------- Team: dashboard buttons ~ Invite jaise size ---------- */
+.team-card .dash-switch {
+  font-size: 14px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 16px !important;
+  border-radius: 10px !important;
+}
+
+/* ---------- Team: delete icon bada ---------- */
+.team-card .danger-icon {
+  width: 40px !important;
+  height: 40px !important;
+}
+.team-card .danger-icon svg {
+  width: 19px !important;
+  height: 19px !important;
+}
+
+/* ---------- Team: members count badge bada ---------- */
+.heading-action .count-badge {
+  font-size: 14px !important;
+  padding: 7px 14px !important;
+  line-height: 1.2 !important;
+}
+/* ---------- Team: halka chhota (Invite, email, dashboard, delete, badge) ---------- */
+
+/* Enter email + Invite */
+.invite-card input {
+  font-size: 14.5px !important;
+  height: 42px !important;
+  min-height: 42px !important;
+}
+.invite-card .btn,
+.invite-card .pw-btn {
+  font-size: 14.5px !important;
+  height: 42px !important;
+  min-height: 42px !important;
+  padding: 0 16px !important;
+}
+
+/* dashboard buttons */
+.team-card .dash-switch {
+  font-size: 13px !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  padding: 0 14px !important;
+}
+
+/* delete icon */
+.team-card .danger-icon {
+  width: 36px !important;
+  height: 36px !important;
+}
+.team-card .danger-icon svg {
+  width: 17px !important;
+  height: 17px !important;
+}
+
+/* members badge */
+.heading-action .count-badge {
+  font-size: 13px !important;
+  padding: 6px 12px !important;
+}
+/* ---------- Team: dashboard buttons = Invite jaise ---------- */
+.team-card .dash-switch {
+  font-size: 14px !important;
+  height: 40px !important;
+  min-height: 38px !important;
+  padding: 0 14px !important;
+  border-radius: 9px !important;
+}
+/* ---------- Settings: Full access / View only badge bada ---------- */
+#settings-0 .count-badge {
+  font-size: 14px !important;
+  padding: 7px 14px !important;
+  line-height: 1.2 !important;
+}
+
+/* ---------- Settings: Delete logs card (halka chhota) ---------- */
+#settings-3 .settings-title h3 {
+  font-size: 15px !important;
+}
+#settings-3 .settings-title p {
+  font-size: 13.5px !important;
+}
+#settings-3 .btn {
+  font-size: 14px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 16px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+#settings-3 .btn svg {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+/* ---------- Settings: on/off toggle bada ---------- */
+.toggle-input {
+  transform: scale(1.3);
+  transform-origin: right center;
+  flex-shrink: 0;
+}
+/* ---------- Monitoring: dono badges (paused + running) ka text same aur bada ---------- */
+.status-banner > span,
+.status-banner > span.status-pill,
+.status-banner .status-pill {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  padding: 6px 14px !important;
+  gap: 7px !important;
+  white-space: nowrap;
+}
+
+.status-banner > span > i,
+.status-banner .status-pill > i {
+  width: 8px !important;
+  height: 8px !important;
+}
+/* ---------- Profile page: niche ke cards bhi upar jaise halka bada ---------- */
+
+/* Full name / Display name / Workspace cards */
+.generic-grid .generic-content h3 {
+  font-size: 16px !important;      /* Full name, Display name, Workspace */
+}
+.generic-grid .generic-content p,
+.generic-grid .generic-content > span {
+  font-size: 14px !important;      /* value + note (email, Visible to...) */
+}
+
+/* Change password card */
+.profile-password .card-head h3 {
+  font-size: 16px !important;      /* Change password */
+}
+.profile-password .card-head p {
+  font-size: 14px !important;      /* Choose a new password... */
+}
+.profile-password label {
+  font-size: 14px !important;      /* New password / Confirm password */
+}
+.profile-password input {
+  font-size: 14px !important;
+}
+
+/* Update password button */
+.profile-password .btn,
+.profile-password .pw-btn {
+  font-size: 14px !important;
+  padding: 9px 16px !important;
+}
+/* ---------- Change password: button inputs ke niche ---------- */
+.profile-password form {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: end;
+}
+
+.profile-password .pw-btn {
+  grid-column: 1 / -1;       /* poori row lega, to niche chala jayega */
+  justify-self: start;       /* left side pe rahega */
+  margin-top: 4px;
+}
+
+/* chhoti screen pe inputs bhi ek ke niche ek */
+@media (max-width: 640px) {
+  .profile-password form {
+    grid-template-columns: 1fr;
+  }
+}
+/* ---------- Settings > General: profile photo row bada ---------- */
+
+/* circle / photo */
+#settings-0 .setting-row:first-child > div:first-child > span:first-child {
+  width: 72px !important;
+  height: 72px !important;
+}
+#settings-0 .setting-row:first-child > div:first-child > span:first-child svg {
+  width: 30px !important;
+  height: 30px !important;      /* user icon */
+}
+
+/* "Profile photo" text */
+#settings-0 .setting-row:first-child b {
+  font-size: 16px !important;
+}
+
+/* gap circle aur text ke beech */
+#settings-0 .setting-row:first-child > div:first-child {
+  gap: 20px !important;
+}
+
+/* Upload / Change photo + Remove buttons */
+#settings-0 .setting-row:first-child .btn {
+  font-size: 14px !important;
+  padding: 9px 16px !important;
+}
 .hero-secondary {
   font-size: 16px !important;   /* View live status */
 }
