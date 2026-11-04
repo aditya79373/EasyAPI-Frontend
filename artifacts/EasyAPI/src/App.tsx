@@ -1277,9 +1277,9 @@ const doLogout = () => {
       />
       <aside className={`sidebar ${mobile ? 'mobile-open' : ''}`}>
         <div className="side-top">
-          <Link to="/dashboard" aria-label="EasyAPI home">
-            <Logo />
-          </Link>
+        <Link to="/" aria-label="EasyAPI home" onClick={() => setMobile(false)}>
+  <Logo />
+</Link>
           <button
             className="icon-btn mobile-close"
             onClick={() => setMobile(false)}
@@ -1641,24 +1641,7 @@ useEffect(() => {
           <div className="visual-vertical">OBSERVABILITY / 01</div>
         </div>
       </section>
-      <section className="landing-stats">
-        <div>
-          <b>99.98%</b>
-          <span>uptime across services</span>
-        </div>
-        <div>
-          <b>2.8M</b>
-          <span>requests tracked daily</span>
-        </div>
-        <div>
-          <b>84ms</b>
-          <span>median response time</span>
-        </div>
-        <div>
-          <b>One view</b>
-          <span>from test to production</span>
-        </div>
-      </section>
+
       <section className="landing-section" id="product">
         <div className="section-intro">
           <div className="eyebrow">A dependable command center</div>
@@ -1777,7 +1760,7 @@ function Feature({
       <div className="feature-icon">{icon}</div>
       <h3>{title}</h3>
       <p>{text}</p>
-      <ArrowRight size={16} className="feature-arrow" />
+      
     </article>
   );
 }

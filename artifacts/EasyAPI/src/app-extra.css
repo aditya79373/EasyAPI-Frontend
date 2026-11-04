@@ -306,8 +306,8 @@ h1, h2, h3, p, b, span { overflow-wrap: anywhere; }
     height: 40px !important;
   }
   .landing-nav .theme-toggle svg {
-    width: 22px !important;
-    height: 22px !important;
+    width: 24px !important;
+    height: 24px !important;
   }
 }
 @media (max-width: 900px) {
@@ -1082,6 +1082,17 @@ h1, h2, h3, p, b, span { overflow-wrap: anywhere; }
   width: 16px;
   height: 16px;
 }
+/* ---------- Mobile menu: Log in button ka text color theme ke hisaab se ---------- */
+html.dark .landing-nav nav .nav-mobile-only,
+html.dark .landing-nav nav a.nav-mobile-only {
+  color: #111111 !important;
+}
+
+html.light .landing-nav nav .nav-mobile-only,
+html.light .landing-nav nav a.nav-mobile-only {
+  color: #ffffff !important;
+}
+
 
   /* Back link aur "WELCOME BACK" ke beech gap */
   .auth-back {
@@ -1089,6 +1100,26 @@ h1, h2, h3, p, b, span { overflow-wrap: anywhere; }
     margin-bottom: 22px !important;
   }
 }
+.status-banner .status-pill.paused {
+  background: #f5b83d !important;
+  color: #3d2a00 !important;
+  border-color: #d99a1c !important;
+}
+.status-banner .status-pill.paused i {
+  background: #3d2a00 !important;
+}
+/* ---------- Mobile landing navbar: logo sirf halka sa bada ---------- */
+@media (max-width: 900px) {
+  .landing-nav .brand svg {
+    width: 37px !important;
+    height: 37px !important;
+  }
+  .landing-nav .brand > span {
+    font-size: 17px !important;
+    white-space: nowrap !important;
+  }
+}
+
 .auth-google {
   width: 100%;
   max-width: 100%;

@@ -190,6 +190,62 @@
   width: 16px;
   height: 16px;
 }
+/* ---------- Saare scrollbars: sidebar jaisa patla purple ---------- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 124, 255, 0.55) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(139, 124, 255, 0.55);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 124, 255, 0.8);
+}
+/* ---------- Light theme: scrollbar gehra purple ---------- */
+html.light * {
+  scrollbar-color: rgba(91, 61, 214, 0.75) transparent;
+}
+
+html.light *::-webkit-scrollbar-thumb {
+  background: rgba(91, 61, 214, 0.75);
+}
+html.light *::-webkit-scrollbar-thumb:hover {
+  background: rgba(76, 45, 196, 0.95);
+}
+/* ---------- Page ka main scrollbar (viewport) ---------- */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 124, 255, 0.6) transparent;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: transparent;
+}
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: rgba(139, 124, 255, 0.6);
+  border-radius: 999px;
+}
+
+/* light theme: gehra purple */
+html.light {
+  scrollbar-color: rgba(91, 61, 214, 0.8) transparent;
+}
+html.light::-webkit-scrollbar-thumb,
+html.light body::-webkit-scrollbar-thumb {
+  background: rgba(91, 61, 214, 0.8);
+}
 /* ---------- Docs: 3 cards aur niche ke content card ke beech gap ---------- */
 .docs-body {
   margin-top: 20px !important;

@@ -500,34 +500,8 @@ export function Monitoring() {
           <b>{title}</b>
           <p>{sub}</p>
         </div>
-               {paused ? (
-  <span
-    style={{
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: 5,
-      padding: '3px 8px',
-      borderRadius: 999,
-      background: '#f5b83d',
-      color: '#3d2a00',
-      border: '1px solid #d99a1c',
-      fontSize: 10,
-      fontWeight: 600,
-      lineHeight: 1.4,
-      whiteSpace: 'nowrap',
-    }}
-  >
-    <i
-      style={{
-        width: 6,
-        height: 6,
-        borderRadius: '50%',
-        background: '#3d2a00',
-        display: 'inline-block',
-      }}
-    />
-    Checks paused
-  </span>
+{paused ? (
+  <Pill tone="paused">Checks paused</Pill>
 ) : (
   <Pill tone="healthy">Checks running</Pill>
 )}
@@ -2326,13 +2300,13 @@ if (!data) {
             </div>
           </div>
           <div className="uptime-bars public-bars">
-            {data.days.map((d) => (
-              <i key={d.date} className={d.status === 'up' ? 'up' : d.status} title={d.date} />
-            ))}
+          {[...data.days].reverse().map((d) => (
+  <i key={d.date} className={d.status === 'up' ? 'up' : d.status} title={d.date} />
+))}
           </div>
           <div className="uptime-range">
-            <span>90 days ago</span>
             <span>Today</span>
+            <span>90 days ago</span>
           </div>
         </Card>
       </div>
