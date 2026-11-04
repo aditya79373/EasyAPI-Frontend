@@ -246,6 +246,127 @@ html.light::-webkit-scrollbar-thumb,
 html.light body::-webkit-scrollbar-thumb {
   background: rgba(91, 61, 214, 0.8);
 }
+.status-banner .status-pill.healthy {
+  background: #15803d !important;
+  color: #ffffff !important;
+  border-color: #166534 !important;
+}
+
+.status-banner .status-pill.healthy i {
+  background: #ffffff !important;
+}
+.status-banner .status-pill.paused {
+  background: #f5b83d !important;
+  color: #3d2a00 !important;
+  border: 1px solid #d99a1c !important;
+  font-weight: 600;
+}
+
+.status-banner .status-pill.paused i {
+  background: #3d2a00 !important;
+}
+.empty-note {
+  font-size: 16px;
+  font-weight: 500;
+  color: #6b7280;
+  margin: 8px 0 0;
+}
+/* Requests / Errors legend */
+.traffic-card .chart-legend span {
+  font-size: 14px !important;
+  font-weight: 500;
+}
+
+/* Chart ke niche wali line */
+.chart-foot,
+.chart-foot small,
+.chart-foot a {
+  font-size: 15px !important;
+}
+
+/* API health: ring ke andar */
+.health-ring b {
+  font-size: 24px !important;
+}
+.health-ring small {
+  font-size: 13px !important;
+}
+
+/* API health: "No services yet" + niche ka text */
+.health-summary-copy b {
+  font-size: 18px !important;
+}
+.health-summary-copy span {
+  font-size: 15px !important;
+}
+
+/* Health list ki rows */
+.health-row,
+.health-row b,
+.health-row span {
+  font-size: 15px !important;
+}
+
+/* Mobile pe footer wrap ho jaye toh */
+@media (max-width: 640px) {
+  .chart-foot {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+/* API health ring: bada circle */
+.health-ring {
+  width: 110px !important;
+  height: 110px !important;
+  flex-shrink: 0;
+}
+.alerts-card .count-badge {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 6px 14px !important;
+  white-space: nowrap;
+}
+.metric-grid .amber svg,
+.metric-grid .tone-amber svg {
+  color: #d97706 !important;
+  stroke: #d97706 !important;
+}
+.alerts-card .count-badge {
+  color: #b45309 !important;
+  border: 1px solid rgba(217, 119, 6, 0.45) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 6px 14px !important;
+  white-space: nowrap;
+}
+/* Alerts page: warning yellow thoda gehra */
+.severity.warning,
+.alert-marker.warning {
+  background: #d97706 !important;
+}
+
+.severity-label.warning {
+  color: #b45309 !important;
+  font-weight: 600;
+}
+
+.alert-overview-icon svg {
+  color: #d97706 !important;
+  stroke: #d97706 !important;
+}
+/* Ring ke andar ka text */
+.health-ring b {
+  font-size: 24px !important;
+  line-height: 1;
+}
+.health-ring b span {
+  font-size: 13px !important;
+}
+.health-ring small {
+  font-size: 12px !important;
+  display: block;
+  margin-top: 3px;
+}
 /* ---------- Docs: 3 cards aur niche ke content card ke beech gap ---------- */
 .docs-body {
   margin-top: 20px !important;

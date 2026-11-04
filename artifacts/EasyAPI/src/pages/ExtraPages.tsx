@@ -9,7 +9,7 @@ import { fetchTeam, readTeam } from '../lib/teamCache';
 import { Dropdown } from '../components/ui/Dropdown';
 import { useNavigate } from 'react-router-dom';   // useNavigate add karo
 import { ArrowLeft} from 'lucide-react';   // ArrowLeft add karo
-import { Logo } from '../App'; 
+
 import {
   Area,
   AreaChart,
@@ -330,7 +330,7 @@ export function Analytics() {
               <p>By request volume</p>
             </div>
           </div>
-          {topServices.length === 0 && <p className="muted-copy">No requests in this range.</p>}
+          {topServices.length === 0 && <p className="empty-note">No requests in this range.</p>}
           {topServices.map((s) => (
             <div
   className="rank-row"
@@ -1346,11 +1346,77 @@ export function GenericPage({ page }: { page: string }) {
 const SectionHeading = ({ title }: { title: string }) => (
   <h3 style={{ margin: '0 0 10px 4px', fontSize: 15, fontWeight: 700 }}>{title}</h3>
 );
+export function PhotoViewer({ src, onClose }: { src: string; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+  const isMobile = window.innerWidth < 640;
+  return (
+    <div
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 9999,
+        background: 'rgba(0,0,0,.7)',
+        backdropFilter: 'blur(4px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 16,
+      }}
+    >
+      <div style={{ position: 'relative', display: 'inline-block', lineHeight: 0 }}>
+        <img
+  src={src}
+  alt="Profile"
+  style={{
+    display: 'block',
+    width: 'auto',
+    height: 'auto',
+   maxWidth: isMobile ? 'min(70vw, 280px)' : '420px',
+maxHeight: isMobile ? '45vh' : '60vh',
+    objectFit: 'contain',
+    borderRadius: 12,
+    background: '#fff',
+    boxShadow: '0 20px 60px rgba(0,0,0,.5)',
+  }}
+/>
+       <button
+  type="button"
+  onClick={onClose}
+  aria-label="Close photo"
+  style={{
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    width: 34,
+    height: 34,
+    borderRadius: '50%',
+    border: 0,
+    cursor: 'pointer',
+    display: 'grid',
+    placeItems: 'center',
+    background: '#e5484d',
+    color: '#fff',
+  }}
+>
+  <X size={18} />
+</button>
+      </div>
+    </div>
+  );
+}
 
 export function SettingsPage() {
   const [theme, setThemeState] = useState(localStorage.getItem('sp_theme') || 'dark');
   const [role, setRole] = useState('');
   const [noLogs, setNoLogs] = useState(false);
+  const [viewPhoto, setViewPhoto] = useState(false);
   const [wsSaved, setWsSaved] = useState('');
   const [wsDraft, setWsDraft] = useState('');
   const [interval, setIntervalSec] = useState(30);
@@ -1540,19 +1606,22 @@ const savePassword = async (e: React.FormEvent) => {
   <Card className="settings-card" id="settings-0">
     <div className="setting-row" style={{ alignItems: 'center' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-  <span
-    style={{
-      width: 56,
-      height: 56,
-      borderRadius: '50%',
-      overflow: 'hidden',
-      flexShrink: 0,
-      display: 'grid',
-      placeItems: 'center',
-      background: 'rgba(99,91,255,.15)',
-      color: '#6b5cff',
-    }}
-  >
+<span
+  onClick={() => avatar && setViewPhoto(true)}
+  title={avatar ? 'View photo' : undefined}
+  style={{
+    width: 56,
+    height: 56,
+    borderRadius: '50%',
+    overflow: 'hidden',
+    flexShrink: 0,
+    display: 'grid',
+    placeItems: 'center',
+    background: 'rgba(99,91,255,.15)',
+    color: '#6b5cff',
+    cursor: avatar ? 'pointer' : 'default',
+  }}
+>
     {avatar ? (
       <img
         src={avatar}
@@ -1811,6 +1880,7 @@ onClick={() => setConfirmDel(true)}
           OK
         </button>
       </div>
+      
     </>
   ) : (
     <>
@@ -1841,6 +1911,7 @@ onClick={() => setConfirmDel(true)}
     </div>
   </div>
 )}
+{viewPhoto && avatar && <PhotoViewer src={avatar} onClose={() => setViewPhoto(false)} />}
     </>
   );
 }
@@ -1854,6 +1925,7 @@ function WinLoader({ color, size }: { color?: string; size?: number }) {
         sessionStorage.getItem('sp_replay') || '',
       ),
       [tab, setTab] = useState('Params'),
+      
       [params, setParams] = useState([{ key: '', value: '' }]),
       [headers, setHeaders] = useState([{ key: 'Accept', value: 'application/json' }]),
       [body, setBody] = useState(
@@ -2059,9 +2131,9 @@ function WinLoader({ color, size }: { color?: string; size?: number }) {
               </div>
               <div className="request-foot">
                 <span>
-                  <Shield size={13} /> Requests are sent directly from your browser
+Requests are sent directly from your browser
                 </span>
-                <span>15s timeout</span>
+                
               </div>
             </Card>
             <Card className="response-card">

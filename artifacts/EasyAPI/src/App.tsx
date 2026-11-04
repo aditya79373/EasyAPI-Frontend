@@ -112,6 +112,7 @@ import type { ApiRecord, AlertRecord, HealthCheck, LogRecord, Role, TeamMember }
 import NotFound from './pages/not-found';
 import './app.css';
 import './app-extra.css';
+import { PhotoViewer } from './pages/ExtraPages';
 import { OrbitLoader } from './components/ui/OrbitLoader';
 
 
@@ -586,6 +587,7 @@ function ProfilePage() {
   const [wsDraft, setWsDraft] = useState('');
   const [pw, setPw] = useState('');
   const [pw2, setPw2] = useState('');
+  const [viewPhoto, setViewPhoto] = useState(false);
   const [showPw, setShowPw] = useState(false);
   const [msg, setMsg] = useState('');
   const [err, setErr] = useState('');
@@ -712,33 +714,36 @@ const initials = (fullName || user.email || '?')
         </div>
       )}
       <div style={{ marginBottom: 20 }}>
-      <Card className="profile-photo">
-        <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-          <span
-            style={{
-              width: 80,
-              height: 80,
-              borderRadius: '50%',
-              overflow: 'hidden',
-              flexShrink: 0,
-              display: 'grid',
-              placeItems: 'center',
-              fontSize: 28,
-              fontWeight: 700,
-              background: 'rgba(99,91,255,.15)',
-              color: '#6b5cff',
-            }}
-          >
+<Card className="profile-photo">
+  <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+    <span
+      onClick={() => avatar && setViewPhoto(true)}
+      title={avatar ? 'View photo' : undefined}
+      style={{
+        width: 80,
+        height: 80,
+        borderRadius: '50%',
+        overflow: 'hidden',
+        flexShrink: 0,
+        display: 'grid',
+        placeItems: 'center',
+        fontSize: 28,
+        fontWeight: 700,
+        background: 'rgba(99,91,255,.15)',
+        color: '#6b5cff',
+        cursor: avatar ? 'pointer' : 'default',
+      }}
+    >
       {avatar ? (
-  <img
-    src={avatar}
-    alt="Profile"
-    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-  />
-) : (
-  <UserRound size={30} />
-)}
-          </span>
+        <img
+          src={avatar}
+          alt="Profile"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      ) : (
+        <UserRound size={30} />
+      )}
+    </span>
           <div>
             <h3>Profile photo</h3>
             
@@ -854,6 +859,8 @@ const initials = (fullName || user.email || '?')
 </Button>
         </form>
       </Card>
+
+      {viewPhoto && avatar && <PhotoViewer src={avatar} onClose={() => setViewPhoto(false)} />}
     </>
   );
 }
@@ -2424,12 +2431,14 @@ const recent = real.slice(0, 5).map((r) => ({
             </ResponsiveContainer>
           </div>
           <div className="chart-foot">
-           <i className="status-dot good" /> {stats.total ? 'Live data' : 'No requests yet'}{' '}
-<small>· Send one from the tester</small>
-            <Link to="/analytics">
-              View analytics <ArrowRight size={14} />
-            </Link>
-          </div>
+  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+    <i className="status-dot good" /> {stats.total ? 'Live data' : 'No requests yet'}
+  </span>
+  <small>Send one from the tester</small>
+  <Link to="/analytics">
+    View analytics <ArrowRight size={14} />
+  </Link>
+</div>
         </Card>
         <Card className="health-card">
           <div className="card-head">
@@ -2812,7 +2821,7 @@ function Apis() {
             />
           </div>
           <div className="toolbar-right">
-            <span className="muted-copy">{items.length} services</span>
+<span className="services-count">{items.length} services</span>
            
 <Dropdown ariaLabel="Filter API status" value={filter} onChange={setFilter}
   options={['All', 'Healthy', 'Degraded', 'Offline']} />
