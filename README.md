@@ -90,14 +90,6 @@ Two more variables are set in the terminal when you run the dev server (see abov
 
 Never commit `.env` files. For production, point the app at your deployed backend URL (for example your Render service).
 
-### Build
-
-```powershell
-cd frontend\artifacts\EasyAPI
-$env:PORT = "5173"
-$env:BASE_PATH = "/"
-corepack pnpm build
-```
 
 ## How workspace sharing works
 
