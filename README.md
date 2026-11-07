@@ -2,7 +2,7 @@
 
 The web app for **EasyAPI**, an API operations workspace. Keep an inventory of the services your team depends on, test endpoints with real HTTP requests, watch request logs and analytics, monitor uptime, and share a workspace with teammates as view-only.
 
-**Live** https://easyapi-euv0.onrender.com/
+
 
 The server lives in a separate repository: **EasyAPI-Backend**.
 
