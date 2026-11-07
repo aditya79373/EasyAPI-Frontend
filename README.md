@@ -2,7 +2,17 @@
 
 The web app for **EasyAPI**, an API operations workspace. Keep an inventory of the services your team depends on, test endpoints with real HTTP requests, watch request logs and analytics, monitor uptime, and share a workspace with teammates as view-only.
 
+**Live** https://easyapi-euv0.onrender.com/
+
 The server lives in a separate repository: **EasyAPI-Backend**.
+
+## Try it
+
+You don't need to set anything up to try EasyAPI. Just open the live site:
+
+**https://easyapi-euv0.onrender.com/**
+
+Sign up with email or Google, and you can start adding APIs and testing them right away. The steps below are only for running the app locally for development.
 
 ## Features
 
